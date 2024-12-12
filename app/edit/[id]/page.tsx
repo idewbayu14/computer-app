@@ -1,26 +1,15 @@
-"use server";
-
 import { db } from "@/lib/db";
 import { FormUpdate } from "./_components/form-update";
 import { UserButton } from "@clerk/nextjs";
 
-interface EditPageProps {
-  params: {
-    id: string
-  }
-}
-
-const EditPage = async ({params} : EditPageProps) => {
-
-  const {id} = params;
+const EditPage = async ({ params }: { params: { id: string } }) => {
+  const { id } = params;
 
   const computers = await db.computer.findFirst({
     where: {
       id_produk: id
     }
   });
-
-  
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -55,7 +44,7 @@ const EditPage = async ({params} : EditPageProps) => {
       </header>
 
       <main className="flex-grow max-w-screen-xl mx-auto mt-5 p-4">
-        <FormUpdate data={computers}/>
+        <FormUpdate data={computers} />
       </main>
 
       <footer className="w-full bg-gray-800 p-4">
@@ -64,9 +53,7 @@ const EditPage = async ({params} : EditPageProps) => {
         </div>
       </footer>
     </div>
+  );
+};
 
-  )
-
-}
-
-export default EditPage
+export default EditPage;
