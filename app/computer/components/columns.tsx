@@ -15,6 +15,7 @@ import { useState } from "react";
 import { Delete } from "./delete";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { DeleteModal } from "./delete-modal";
 
 export type ComputerColumns = {
   id: string;
@@ -92,50 +93,9 @@ export const columns: ColumnDef<ComputerColumns>[] = [
     id: "actions",
     cell: ({ row }) => {
       const computer = row.original;
-      const [isOpen, setIsOpen] = useState(false);
-      const router = useRouter();
-
-      const handleDeleteSuccess = () => {
-
-      };
-
-      const handleUpdateClick = () => {
-        router.push(`/edit/${computer.id}`);
-      };
-
-      return (
-        <div>
-          <Delete
-            isOpen={isOpen}
-            onClose={() => setIsOpen(false)}
-            id={computer.id} 
-            onDeleteSuccess={handleDeleteSuccess}
-          />
-          <div>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="h-8 w-8 p-0">
-                  <span className="sr-only">Open menu</span>
-                  <MoreHorizontal className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigator.clipboard.writeText(computer.id)}>
-                  Copy payment ID
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setIsOpen(true)} style={{ cursor: "pointer" }}>
-                  Delete
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={handleUpdateClick} style={{ cursor: "pointer" }}>
-                  Update
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        </div>
-      );
+      return(
+        <DeleteModal content={computer} />
+      )
     },
   },
 ];
