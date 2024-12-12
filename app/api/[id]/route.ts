@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET(req: Request, { params }: { params: { id: string } }) {
   try {
     const { id } = params;
+    console.log("Fetching product with ID:", id);
     const computer = await db.computer.findUnique({
       where: { id_produk: id },
     });
@@ -19,10 +20,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function PATCH(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   try {
     const { id } = params;
     const body = await req.json().catch((err) => {
@@ -76,6 +74,6 @@ export async function PATCH(
     return NextResponse.json(computer, { status: 200 });
   } catch (error) {
     console.error("Detailed error:", error);
-    return NextResponse.json({ error: "Internal Error" }, { status: 404 });
+    return NextResponse.json({ error: "Internal Error" }, { status: 500 });
   }
 }
