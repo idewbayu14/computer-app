@@ -1,10 +1,7 @@
 import { db } from "@/lib/db"
 import { NextResponse } from "next/server"
 
-export async function PATCH(
-    req: Request,
-    { params }: { params: { id: string} } 
-) {
+export async function PATCH( { req, params }: { params: { id: string }, req: Request }) {
     try {
         const { id } = params;
         const body = await req.json();
