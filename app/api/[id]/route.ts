@@ -1,24 +1,6 @@
 import { db } from "@/lib/db"
 import { NextResponse } from "next/server"
 
-export async function GET( { req, params }: { params: { id: string }, req: Request }) {
-  try {
-    const { id } = params
-    const computer = await db.computer.findUnique({
-      where: { id_produk: id },
-    })
-
-    if (!computer) {
-      return NextResponse.json({ error: "Produk tidak ditemukan" }, { status: 404 })
-    }
-
-    return NextResponse.json(computer)
-  } catch (error) {
-    console.error(error)
-    return NextResponse.json({ error: "Terjadi kesalahan saat mengambil data produk." }, { status: 500 })
-  }
-}
-
 export async function PATCH(
     req: Request,
     { params }: { params: { id: string} } 
