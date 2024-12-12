@@ -28,10 +28,10 @@ const LandingPage = async () => {
         <p className="text-lg mt-4 mb-6">Temukan produk komputer terbaik yang Anda cari</p>
         <div className="p-5">
           <Link
-            href="/computer"
+            href="/dashboard"
             className="bg-white text-black py-3 px-8 rounded-lg text-lg font-semibold hover:bg-gray-100 transition"
           >
-            Mulai Berbelanja
+            Mulai Mengelola Produk
           </Link>
         </div>
       </header>
@@ -40,23 +40,26 @@ const LandingPage = async () => {
       <section className="bg-gray-100 py-10">
         <h2 className="text-3xl font-semibold text-center mb-8">Fitur Unggulan Kami</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-10">
-          <div className="text-center">
+          <div className="text-center p-6 bg-white rounded-lg shadow-lg">
             <div className="text-4xl mb-4">🖥️</div>
             <h3 className="font-semibold">Katalog Produk Lengkap</h3>
-            <p>Temukan berbagai produk komputer, dari desktop hingga laptop dengan spesifikasi yang sesuai kebutuhan Anda.</p>
+            <p className="text-xl">Temukan berbagai produk komputer, dari desktop hingga laptop, dengan spesifikasi yang sesuai kebutuhan Anda.</p>
           </div>
-          <div className="text-center">
+          <div className="text-center p-6 bg-white rounded-lg shadow-lg">
             <div className="text-4xl mb-4">📦</div>
             <h3 className="font-semibold">Stok Terkini</h3>
-            <p>Selalu update dengan stok produk terbaru untuk memastikan Anda mendapatkan apa yang Anda butuhkan.</p>
+            <p className="text-xl">Selalu up-to-date dengan stok produk terbaru untuk memastikan Anda mendapatkan apa yang Anda butuhkan.</p>
           </div>
-          <div className="text-center">
-            <div className="text-4xl mb-4">🔒</div>
-            <h3 className="font-semibold">Keamanan Transaksi</h3>
-            <p>Keamanan transaksi Anda adalah prioritas kami. Belanja dengan nyaman dan aman di platform kami.</p>
+          <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div className="text-4xl mb-4">📈</div>
+            <h3 className="font-semibold">Analisis Produk</h3>
+            <p className="text-xl">Dapatkan wawasan mendalam tentang performa produk dan tren penjualan untuk strategi bisnis yang lebih baik.</p>
           </div>
         </div>
       </section>
+
+
+
 
       {/* Gambar Produk */}
       <section className="bg-gray-200 py-10">
