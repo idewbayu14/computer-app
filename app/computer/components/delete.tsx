@@ -7,10 +7,8 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
-    AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";  // Import useRouter
+import { useRouter } from "next/navigation";  
 import { useState } from "react";
 
 export const Delete = ({
@@ -25,7 +23,7 @@ export const Delete = ({
     onDeleteSuccess: () => void;
 }) => {
     const [loading, setLoading] = useState(false);
-    const router = useRouter(); // Inisialisasi useRouter
+    const router = useRouter(); 
 
     const handleDelete = async () => {
         setLoading(true);
@@ -35,14 +33,14 @@ export const Delete = ({
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ id }), // Kirim id untuk dihapus
+                body: JSON.stringify({ id }), 
             });
             const data = await response.json();
     
             if (data.status === 200) {
                 onDeleteSuccess();
                 onClose();
-                router.refresh(); // Refresh halaman setelah berhasil delete
+                router.refresh(); 
             } else {
                 console.error("Failed to delete data");
             }

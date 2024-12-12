@@ -24,16 +24,12 @@ const EditPage = async ({params} : EditPageProps) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      {/* Header */}
       <header className="w-full bg-gradient-to-r from-gray-800 to-gray-700 p-6">
         <div className="flex justify-between items-center max-w-screen-xl mx-auto">
-          {/* Logo */}
           <a href="/dashboard">
             <h1 className="text-white text-xl font-bold">My Computer Store</h1>
           </a>
 
-          {/* Navigation Links and User Button */}
           <div className="flex items-center ml-auto space-x-6">
             <a
               href="/computer"
@@ -58,12 +54,10 @@ const EditPage = async ({params} : EditPageProps) => {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="flex-grow max-w-screen-xl mx-auto mt-5 p-4">
         <FormUpdate data={computers}/>
       </main>
 
-      {/* Footer */}
       <footer className="w-full bg-gray-800 p-4">
         <div className="text-center text-white">
           <p>10122234 | I Dewa Nyoman Bayu Satria Wibawa | IF-06.</p>

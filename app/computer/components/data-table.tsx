@@ -29,7 +29,6 @@ interface DataTableProps<TData, TValue> {
   
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
-  // isAdmin: boolean
 }
 
 export function DataTable<TData, TValue>({

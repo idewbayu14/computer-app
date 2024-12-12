@@ -1,25 +1,20 @@
-// page.tsx
 "use client";
 
 import React from "react";
-import { getRekapData } from "@/app/rekap/utils"; // Pastikan import getRekapData dari utils.ts
+import { getRekapData } from "@/app/rekap/utils";
 import { UserButton } from "@clerk/nextjs";
 
 const RekapPage = async () => {
-  // Ambil data rekap
   const { kategoriData, totalProduk, totalHarga } = await getRekapData();
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="w-full bg-gradient-to-r from-gray-800 to-gray-700 p-6">
         <div className="flex justify-between items-center max-w-screen-xl mx-auto">
-          {/* Logo */}
           <a href="/dashboard">
             <h1 className="text-white text-xl font-bold">My Computer Store</h1>
           </a>
 
-          {/* Navigation Links and User Button */}
           <div className="flex items-center ml-auto space-x-6">
             <a
               href="/computer"
@@ -44,11 +39,9 @@ const RekapPage = async () => {
         </div>
       </header>
 
-      {/* Content */}
       <main className="flex-grow p-8">
         <h1 className="text-4xl font-semibold mb-8 text-center text-gray-800">Laporan Produk</h1>
 
-        {/* Total Produk dan Harga */}
         <div className="mb-8 bg-white p-6 rounded-lg shadow-lg">
           <h2 className="text-2xl font-semibold text-gray-700">Total Produk: {totalProduk}</h2>
           <h2 className="text-2xl font-semibold text-gray-700 mt-2">
@@ -56,7 +49,6 @@ const RekapPage = async () => {
           </h2>
         </div>
 
-        {/* Tabel Data Rekap */}
         <div className="overflow-x-auto bg-white shadow-lg rounded-lg p-4">
           {Object.entries(kategoriData).map(([kategori, data]) => (
             <div key={kategori} className="mb-10">
@@ -71,7 +63,6 @@ const RekapPage = async () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Iterasi untuk setiap produk per kategori */}
                   {data.produk.map((produk) => (
                     <tr key={produk.id_produk} className="hover:bg-gray-100 transition-colors">
                       <td className="px-6 py-4 border border-gray-300">{produk.nama_produk}</td>
@@ -101,7 +92,6 @@ const RekapPage = async () => {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="w-full bg-gray-800 p-4 mt-10 text-center text-white">
         <p>10122234 | I Dewa Nyoman Bayu Satria Wibawa | IF-06</p>
       </footer>

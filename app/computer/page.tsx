@@ -17,15 +17,12 @@ const Computer = async () => {
   }))
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
       <header className="w-full bg-gradient-to-r from-gray-800 to-gray-700 p-6">
         <div className="flex justify-between items-center max-w-screen-xl mx-auto">
-          {/* Logo */}
           <a href="/dashboard">
             <h1 className="text-white text-xl font-bold">My Computer Store</h1>
           </a>
 
-          {/* Navigation Links and User Button */}
           <div className="flex items-center ml-auto space-x-6">
             <a
               href="/computer"
@@ -51,13 +48,11 @@ const Computer = async () => {
       </header>
 
 
-      {/* Main Content */}
       <main className="flex-grow max-w-screen-xl mx-auto mt-5 p-4">
       <h2 className="text-4xl font-semibold mb-8 text-center text-gray-800">Tabel Data Produk</h2>
         <DataTable columns={columns} data={formatedData}/>
       </main>
 
-      {/* Footer */}
       <footer className="w-full bg-gray-800 p-4">
         <div className="text-center text-white">
           <p>10122234 | I Dewa Nyoman Bayu Satria Wibawa | IF-06.</p>
