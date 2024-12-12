@@ -15,7 +15,6 @@ type ImageUploadProps = {
 
 export const ImageUpload = ({ values, onChange, onRemove }: ImageUploadProps) => {
   const [isMounted, setIsMounted] = useState(false);
-  const [imageUrls, setImageUrls] = useState<string[]>(values);
 
   useEffect(() => {
     setIsMounted(true);
@@ -32,16 +31,18 @@ export const ImageUpload = ({ values, onChange, onRemove }: ImageUploadProps) =>
   return (
     <>
       <div className={"mb-4 flex items-center gap-4"}>
-        {imageUrls.map((url) => (
+        {values.map((url) => {
+          console.log(url)
+          return (
           <div key={url} className={"relative w-[200px] h-[200px] rounded-md overflow-hidden"}>
             <div className={"z-10 absolute top-2 right-2"}>
               <Button type={"button"} onClick={() => onRemove(url)} variant={"destructive"} size={"icon"}>
                 <Trash className={"h-4 w-4"} />
               </Button>
             </div>
-            <Image fill className={"object-cover"} alt={"Image"} src={`${url}`} width={500} height={500} />
+            <Image className={"object-cover"} alt={"Image"} src={`${url}`} width={500} height={500}/>
           </div>
-        ))}
+        )})}
       </div>
       <CldUploadWidget onSuccess={onUpload} uploadPreset="g4i8smpr">
         {({ open }) => {

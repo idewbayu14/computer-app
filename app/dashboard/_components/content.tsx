@@ -2,6 +2,7 @@
 
 import { UserButton } from "@clerk/nextjs"
 import { Computer } from "@prisma/client"
+import Image from "next/image"
 
 type ContentProps = {
     computer: Computer[]  
@@ -75,10 +76,11 @@ export const ContentDashboard = ({computer}: ContentProps) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-10">
         {computer.map((product) => (
           <div key={product.id_produk} className="text-center p-4 bg-white rounded-lg shadow-lg">
-            <img
+            <Image
               src={product.gambar_produk} 
               alt={product.nama_produk}
               className="w-full h-48 object-cover rounded-lg mb-4"
+              width={500} height={500}
             />
             <h3 className="font-semibold">{product.nama_produk}</h3>
             <p className="text-gray-500">{product.kategori}</p>

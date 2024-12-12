@@ -58,6 +58,7 @@ export const ContentComponent = ({computer}: ContentProps) => {
                 src={product.gambar_produk} 
                 alt={product.nama_produk}
                 className="w-full h-48 object-cover rounded-lg mb-4"
+                width={500} height={500}
               />
               <h3 className="font-semibold">{product.nama_produk}</h3>
               <p className="text-gray-500">{product.kategori}</p>

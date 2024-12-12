@@ -138,21 +138,17 @@ export const Create = () => {
           />
 
           <FormField
-            control={form.control}
-            name="gambar_produk"
-            render={({ field }) => (
+          control={form.control}
+          name="gambar_produk"
+          render={({ field }) => (
               <FormItem>
-                <FormLabel>Gambar Produk</FormLabel>
-                <FormControl>
-                  <ImageUpload
-                    onChange={(url) => field.onChange(url)}
-                    onRemove={() => field.onChange("")}
-                    values={field.value ? [field.value] : []}
-                  />
-                </FormControl>
-                <FormMessage />
+              <FormLabel>Gambar Produk</FormLabel>
+              <FormControl>
+                  <ImageUpload  onChange={(url) => field.onChange(url)} onRemove={() => field.onChange("")} values={field.value ? [field.value]: []}/>
+              </FormControl>
+              <FormMessage />
               </FormItem>
-            )}
+          )}
           />
 
           <div className="flex justify-end">

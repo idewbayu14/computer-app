@@ -1,6 +1,5 @@
-"use client";
+"use server"
 
-import React from "react";
 import { getRekapData } from "@/app/rekap/utils";
 import { UserButton } from "@clerk/nextjs";
 
