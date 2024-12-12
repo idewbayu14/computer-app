@@ -1,7 +1,7 @@
 import { db } from "@/lib/db"
 import { NextResponse } from "next/server"
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET( { req, params }: { params: { id: string }, req: Request }) {
   try {
     const { id } = params
     const computer = await db.computer.findUnique({
