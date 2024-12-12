@@ -39,7 +39,7 @@ export const ImageUpload = ({ values, onChange, onRemove }: ImageUploadProps) =>
                 <Trash className={"h-4 w-4"} />
               </Button>
             </div>
-            <Image fill className={"object-cover"} alt={"Image"} src={`${url}`} />
+            <Image fill className={"object-cover"} alt={"Image"} src={`${url}`} width={500} height={500} />
           </div>
         ))}
       </div>
