@@ -1,4 +1,3 @@
-import { db } from "@/lib/db";
 import axios from "axios";
 
 type Computer = {
@@ -11,15 +10,16 @@ type Computer = {
 
 type KategoriData = {
   [key: string]: {
-    produk: Computer[];     
-    jumlahProduk: number;   
-    totalHarga: number;     
+    produk: Computer[];
+    jumlahProduk: number;
+    totalHarga: number;
   };
 };
 
 export const getRekapData = async () => {
   try {
     const response = await axios.get(`/api/computer`);
+    
     const data: Computer[] = response.data;
 
     const kategoriData: KategoriData = data.reduce((result, item) => {
@@ -28,8 +28,8 @@ export const getRekapData = async () => {
       }
 
       result[item.kategori].produk.push(item);
-      result[item.kategori].jumlahProduk += 1;
-      result[item.kategori].totalHarga += item.harga * item.stok;
+      result[item.kategori].jumlahProduk += 1;  
+      result[item.kategori].totalHarga += item.harga * item.stok;  
 
       return result;
     }, {} as KategoriData);

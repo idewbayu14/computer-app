@@ -1,23 +1,32 @@
-'use server'
+'use client'; 
 
-import { ContentDashboard } from "./_components/content"
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { ContentDashboard } from "./_components/content";
 
-const LandingPage = async () => {
-  try {
-    const response = await axios.get(`/api/computer`);
-    
-    const dataComputer = response.data;
+const LandingPage = () => {
+  const [dataComputer, setDataComputer] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    return (
-      <ContentDashboard computer={dataComputer} />
-    );
-  } catch (error) {
-    console.error('Error fetching data: ', error);
-    return (
-      <ContentDashboard computer={[]} />
-    );
-  }
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/computer`);
+        setDataComputer(response.data);  
+      } catch (err) {
+      } finally {
+        setLoading(false);
+      }
+    };
 
-export default LandingPage
+    fetchData(); 
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  return <ContentDashboard computer={dataComputer} />;
+};
+
+export default LandingPage;
