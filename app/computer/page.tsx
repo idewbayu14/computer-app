@@ -54,7 +54,7 @@ const Computer = async () => {
       </main>
 
       <footer className="w-full bg-gray-800 p-4">
-        <div className="text-center text-white">
+        <div className="text-center text-white"> 
           <p>10122234 | I Dewa Nyoman Bayu Satria Wibawa | IF-06.</p>
         </div>
       </footer>
