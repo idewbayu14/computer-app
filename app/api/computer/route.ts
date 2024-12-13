@@ -1,6 +1,18 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
+
+export async function GET(req: Request) {
+    try{
+
+        const computer = await db.computer.findMany()
+
+        return NextResponse.json(computer)
+    }catch(error){
+        return NextResponse.json({message: "something went wrong", status: 200})
+    }
+}
+
 export async function POST(req: Request) {
     try {
         const body = await req.json();
