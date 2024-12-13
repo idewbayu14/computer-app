@@ -3,6 +3,7 @@
 import { UserButton } from "@clerk/nextjs"
 import { Computer } from "@prisma/client"
 import Image from "next/image"
+import Link from "next/link"
 
 type ContentProps = {
     computer: Computer[]  
@@ -13,29 +14,29 @@ export const ContentDashboard = ({computer}: ContentProps) => {
         <div className="flex flex-col min-h-screen">
     <header className="w-full bg-gradient-to-r from-gray-800 to-gray-700 p-6">
         <div className="flex justify-between items-center max-w-screen-xl mx-auto">
-          <a href="/dashboard">
+          <Link href="/dashboard">
             <h1 className="text-white text-xl font-bold">My Computer Store</h1>
-          </a>
+          </Link>
 
           <div className="flex items-center ml-auto space-x-6">
-            <a
+            <Link
               href="/computer"
               className="text-white hover:text-gray-200 hover:bg-gray-900 rounded-lg px-4 py-2 transition-all duration-300"
             >
               Tabel Produk
-            </a>
-            <a
+            </Link>
+            <Link
               href="/dashboard"
               className="text-white hover:text-gray-200 hover:bg-gray-900 rounded-lg px-4 py-2 transition-all duration-300"
             >
               Dashboard
-            </a>
-            <a
+            </Link>
+            <Link
               href="/rekap"
               className="text-white hover:text-gray-200 hover:bg-gray-900 rounded-lg px-4 py-2 transition-all duration-300"
             >
               Laporan
-            </a>
+            </Link>
             <UserButton />
           </div>
         </div>
@@ -100,12 +101,12 @@ export const ContentDashboard = ({computer}: ContentProps) => {
       <h2 className="text-3xl font-semibold text-center mb-4">Kelola Produk Anda Sekarang!</h2>
       <p className="text-lg text-center mb-6">Tambah atau edit produk Anda di toko dengan mudah dan cepat.</p>
       <div className="text-center">
-        <a
+        <Link
           href="/computer"
           className="bg-white text-black py-2 px-6 rounded-lg font-semibold transition-all duration-300 hover:bg-gray-200"
         >
           Tambah Produk Baru
-        </a>
+        </Link>
       </div>
     </section>
 

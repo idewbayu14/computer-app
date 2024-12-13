@@ -24,7 +24,7 @@ export default function RootLayout({
       layout: { unsafe_disableDevelopmentModeWarnings: true },
     }}
   >
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body>
           <Toaster />
           {children}
