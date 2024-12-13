@@ -1,19 +1,8 @@
 "use client";
 
-import { MoreHorizontal } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, DropdownMenuLabel, 
-  DropdownMenuSeparator, 
-  DropdownMenuTrigger 
-} from "@/components/ui/dropdown-menu";
-import { useState } from "react";
-import { Delete } from "./delete";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { DeleteModal } from "./delete-modal";
 

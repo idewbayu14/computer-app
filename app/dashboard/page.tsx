@@ -1,14 +1,23 @@
 'use server'
 
-import { db } from "@/lib/db"
 import { ContentDashboard } from "./_components/content"
+import axios from "axios";
 
 const LandingPage = async () => {
-  const dataComputer = await db.computer.findMany()
+  try {
+    const response = await axios.get(`/api/computer`);
+    
+    const dataComputer = response.data;
 
-  return (
-    <ContentDashboard computer={dataComputer}/>
-  )
+    return (
+      <ContentDashboard computer={dataComputer} />
+    );
+  } catch (error) {
+    console.error('Error fetching data: ', error);
+    return (
+      <ContentDashboard computer={[]} />
+    );
+  }
 }
 
 export default LandingPage
