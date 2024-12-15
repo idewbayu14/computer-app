@@ -8,8 +8,10 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useRouter } from "next/navigation";  
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { revalidatePath } from "next/cache";
+
 
 export const Delete = ({
     isOpen,
@@ -23,7 +25,6 @@ export const Delete = ({
     onDeleteSuccess: () => void;
 }) => {
     const [loading, setLoading] = useState(false);
-    const router = useRouter(); 
 
     const handleDelete = async () => {
         setLoading(true);
@@ -37,18 +38,15 @@ export const Delete = ({
             });
             const data = await response.json();
     
-            if (data.status === 200) {
-                onDeleteSuccess();
-                onClose();
-                router.refresh(); 
-            } else {
-                console.error("Failed to delete data");
-            }
+            onDeleteSuccess();
+            onClose();
+
         } catch (error) {
             console.error("Error during delete", error);
         } finally {
             setLoading(false);
         }
+        revalidatePath("/computer")
     };
 
     const onModalChanges = (open: boolean) => {

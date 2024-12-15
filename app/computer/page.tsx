@@ -8,6 +8,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import Link from "next/link";
 
+
 interface ComputerData {
   id_produk: string;
   nama_produk: string;
