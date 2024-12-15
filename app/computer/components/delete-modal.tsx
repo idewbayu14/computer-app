@@ -20,11 +20,12 @@ export const DeleteModal = ({content}: {content: ComputerColumns}) => {
       const router = useRouter();
 
       const handleDeleteSuccess = () => {
-
+        router.push('/computer');
       };
-
+      
       const handleUpdateClick = () => {
         router.push(`/edit/${content.id}`);
+        router.refresh(); 
       };
 
       return (

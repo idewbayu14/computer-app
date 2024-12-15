@@ -7,7 +7,7 @@ import { ContentDashboard } from "./_components/content";
 const LandingPage = () => {
   const [dataComputer, setDataComputer] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {

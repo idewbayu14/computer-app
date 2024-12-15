@@ -36,13 +36,19 @@ export async function POST(req: Request) {
 
 export async function DELETE(req: Request) {
     try {
-        const { id } = await req.json(); 
+        const { id } = await req.json();
+        
+        if (!id) {
+            return NextResponse.json({ error: "ID is required", status: 400 });
+        }
+
         const computer = await db.computer.delete({
-            where: { id_produk: id }, 
+            where: { id_produk: id },
         });
 
         return NextResponse.json({ message: "Delete Success", status: 200 });
     } catch (error) {
+        console.error('Delete Error:', error);
         return NextResponse.json({ error: "Failed to delete data", status: 500 });
     }
 }

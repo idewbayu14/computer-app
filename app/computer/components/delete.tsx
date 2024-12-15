@@ -55,7 +55,7 @@ export const Delete = ({
         if (open) {
             onClose();
         }
-    };
+    };  
 
     return (
         <AlertDialog onOpenChange={onModalChanges} open={isOpen}>

@@ -1,32 +1,91 @@
-'use client'; // Perlu diubah ke 'use client' agar mendukung event-driven dan rendering di client-side
+import { db } from "@/lib/db"
+import { format } from "date-fns"
+import { ComputerColumns } from "@/app/computer/components/columns"
+import Link from "next/link"
 
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { ContentComponent } from "./_components/content";
+const LandingPage = async () => {
+  const dataComputer = await db.computer.findMany()
 
-const LandingPage = () => {
-  const [dataComputer, setDataComputer] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const formatedData: ComputerColumns[] = dataComputer.map((item) => ({
+    id: item.id_produk,
+    nama_produk: item.nama_produk,
+    kategori: item.kategori,
+    harga: item.harga,
+    stok: item.stok,
+    tanggal_ditambahkan: format(item.tanggal_ditambahkan, "MMMM dd, yyyy"),
+    gambar_produk: item.gambar_produk,
+  }))
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`/api/computer`);
-        setDataComputer(response.data);
-      } catch (err) {
-      } finally {
-        setLoading(false);
-      }
-    };
+  return (
+    <div className="flex flex-col min-h-screen">
+      <header
+        className="bg-cover bg-center text-white text-center py-20"
+        style={{ backgroundImage: 'url(/bg.jpg)' }}
+      >
+        <h1 className="text-4xl font-bold">Selamat Datang di Computer App Store</h1>
+        <p className="text-lg mt-4 mb-6">Temukan produk komputer terbaik yang Anda cari</p>
+        <div className="p-5">
+          <Link
+            href="/dashboard"
+            className="bg-white text-black py-3 px-8 rounded-lg text-lg font-semibold hover:bg-gray-100 transition"
+          >
+            Mulai Mengelola Produk
+          </Link>
+        </div>
+      </header>
 
-    fetchData();
-  }, []);
+      <section className="bg-gray-100 py-10">
+        <h2 className="text-3xl font-semibold text-center mb-8">Fitur Unggulan Kami</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-10">
+          <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div className="text-4xl mb-4">🖥️</div>
+            <h3 className="font-semibold">Katalog Produk Lengkap</h3>
+            <p className="text-xl">Temukan berbagai produk komputer, dari desktop hingga laptop, dengan spesifikasi yang sesuai kebutuhan Anda.</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div className="text-4xl mb-4">📦</div>
+            <h3 className="font-semibold">Stok Terkini</h3>
+            <p className="text-xl">Selalu up-to-date dengan stok produk terbaru untuk memastikan Anda mendapatkan apa yang Anda butuhkan.</p>
+          </div>
+          <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+            <div className="text-4xl mb-4">📈</div>
+            <h3 className="font-semibold">Analisis Produk</h3>
+            <p className="text-xl">Dapatkan wawasan mendalam tentang performa produk dan tren penjualan untuk strategi bisnis yang lebih baik.</p>
+          </div>
+        </div>
+      </section>
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+      <section className="bg-gray-200 py-10">
+        <h2 className="text-3xl font-semibold text-center mb-8">Daftar Produk</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-10">
+          {formatedData.map((product) => (
+            <div key={product.id} className="text-center p-4 bg-white rounded-lg shadow-lg">
+              <img
+                src={product.gambar_produk} // Gambar produk
+                alt={product.nama_produk}
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="font-semibold">{product.nama_produk}</h3>
+              <p className="text-gray-500">{product.kategori}</p>
+              <p className="text-xl font-bold mt-2">
+                {new Intl.NumberFormat('id-ID', {
+                  style: 'currency',
+                  currency: 'IDR',
+                  minimumFractionDigits: 2,
+                }).format(product.harga)}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-  return <ContentComponent computer={dataComputer} />;
-};
+      <footer className="w-full bg-gray-800 p-4 mt-auto">
+        <div className="text-center text-white">
+          <p>10122234 | I Dewa Nyoman Bayu Satria Wibawa | IF-06.</p>
+        </div>
+      </footer>
+    </div>
+  )
+}
 
-export default LandingPage;
+export default LandingPage

@@ -38,8 +38,6 @@ const Computer = () => {
         }));
         setDataComputer(formatedData);
       } catch (err) {
-        setError("Failed to fetch data");
-        console.error(err);
       } finally {
         setLoading(false);
       }

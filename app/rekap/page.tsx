@@ -1,4 +1,4 @@
-import { getRekapData } from "@/app/rekap/utils";
+import { getRekapData } from "@/app/rekap/_components/report";
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 

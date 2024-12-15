@@ -1,4 +1,4 @@
-import axios from "axios";
+import { db } from "@/lib/db";
 
 type Computer = {
   id_produk: string;
@@ -18,9 +18,7 @@ type KategoriData = {
 
 export const getRekapData = async () => {
   try {
-    const response = await axios.get(`/api/computer`);
-    
-    const data: Computer[] = response.data;
+    const data: Computer[] = await db.computer.findMany();
 
     const kategoriData: KategoriData = data.reduce((result, item) => {
       if (!result[item.kategori]) {
@@ -29,7 +27,7 @@ export const getRekapData = async () => {
 
       result[item.kategori].produk.push(item);
       result[item.kategori].jumlahProduk += 1;  
-      result[item.kategori].totalHarga += item.harga * item.stok;  
+      result[item.kategori].totalHarga += item.harga * item.stok;
 
       return result;
     }, {} as KategoriData);
@@ -38,8 +36,9 @@ export const getRekapData = async () => {
     const totalHarga = data.reduce((acc, item) => acc + item.harga * item.stok, 0);
 
     return { kategoriData, totalProduk, totalHarga };
+
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error("Terjadi kesalahan saat mengambil data:", error);
     return { kategoriData: {}, totalProduk: 0, totalHarga: 0 };
   }
 };
