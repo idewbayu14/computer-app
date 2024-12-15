@@ -32,7 +32,7 @@ const RekapPage = async () => {
             >
               Laporan
             </Link>
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
       </header>

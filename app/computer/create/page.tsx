@@ -30,7 +30,7 @@ const CreateProduct = async () => {
             >
               Laporan
             </Link>
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
       </header>

@@ -82,7 +82,7 @@ const Computer = () => {
             >
               Laporan
             </Link>
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
       </header>

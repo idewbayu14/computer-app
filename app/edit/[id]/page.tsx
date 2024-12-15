@@ -46,7 +46,7 @@ const EditPage = async ({params} : EditPageProps) => {
             >
               Laporan
             </Link>
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
       </header>

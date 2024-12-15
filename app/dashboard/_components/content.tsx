@@ -37,7 +37,7 @@ export const ContentDashboard = ({computer}: ContentProps) => {
             >
               Laporan
             </Link>
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
       </header>
