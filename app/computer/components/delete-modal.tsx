@@ -12,7 +12,6 @@ import { useState } from "react";
 import { Delete } from "./delete";
 import { useRouter } from "next/navigation";
 import { ComputerColumns } from "./columns";
-import { revalidatePath } from "next/cache";
 
 export const DeleteModal = ({content}: {content: ComputerColumns}) => {
 

@@ -1,4 +1,4 @@
-import { getRekapData } from "@/app/rekap/_components/report";
+import { getRekapData } from "@/app/rekap/_components/report"; // Assuming the import path is correct
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
@@ -76,7 +76,7 @@ const RekapPage = async () => {
                 </tbody>
                 <tfoot className="bg-gray-100">
                   <tr>
-                    <td className="px-6 py-4 font-semibold border border-gray-300">Subtotal</td>
+                    <td className="px-6 py-4 font-semibold border border-gray-300">Subtotal Produk</td>
                     <td className="px-6 py-4 border border-gray-300"></td>
                     <td className="px-6 py-4 font-semibold border border-gray-300">{data.jumlahProduk}</td>
                     <td className="px-6 py-4 font-semibold border border-gray-300">
